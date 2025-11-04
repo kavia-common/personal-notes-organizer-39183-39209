@@ -1,0 +1,36 @@
+.notes-list { display: flex; flex-direction: column; gap: 8px; }
+
+.note-item {
+  position: relative;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 10px;
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.05s;
+}
+.note-item:hover { border-color: var(--primary); background: #f8fafc; }
+.note-item.active { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37,99,235,0.12); }
+
+.title { font-weight: 600; color: var(--text); margin-bottom: 6px; }
+.meta { display: flex; align-items: center; gap: 8px; color: #6b7280; font-size: 12px; }
+.tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.tag { background: var(--background); border: 1px solid var(--border); padding: 2px 8px; border-radius: 9999px; }
+
+.delete {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #9ca3af;
+  font-size: 14px;
+}
+.delete:hover { color: var(--error); }
+
+.empty {
+  text-align: center;
+  color: #6b7280;
+  padding: 16px;
+}

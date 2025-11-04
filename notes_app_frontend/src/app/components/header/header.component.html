@@ -1,0 +1,21 @@
+<header class="topbar">
+  <div class="left">
+    <div class="logo">🗒️</div>
+    <div class="title">{{ appTitle }}</div>
+  </div>
+  <div class="center">
+    <input
+      class="search"
+      type="search"
+      [(ngModel)]="model"
+      (ngModelChange)="onModelChange($event)"
+      (focus)="onSearchFocus()"
+      placeholder="Search notes, content, or tags..."
+      aria-label="Search notes"
+    />
+  </div>
+  <div class="right">
+    <button class="btn primary" (click)="newNote.emit()" title="New Note (Ctrl/Cmd+N)">New Note</button>
+    <button class="btn amber" (click)="newNotebook.emit()" title="New Notebook">New Notebook</button>
+  </div>
+</header>

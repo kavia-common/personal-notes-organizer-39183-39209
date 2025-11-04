@@ -1,0 +1,17 @@
+<div class="notes-list">
+  <div
+    *ngFor="let n of notes"
+    class="note-item"
+    [class.active]="n.id === activeNoteId"
+    (click)="selectNote.emit(n.id)">
+    <div class="title">{{ n.title || 'Untitled note' }}</div>
+    <div class="meta">
+      <span class="time">{{ fmt(n.updatedAt) }}</span>
+      <span class="tags">
+        <span *ngFor="let t of n.tags" class="tag">#{{ t }}</span>
+      </span>
+    </div>
+    <button class="delete" title="Delete note" (click)="$event.stopPropagation(); deleteNote.emit(n.id)">✕</button>
+  </div>
+  <div *ngIf="notes.length === 0" class="empty">No notes match the filter.</div>
+</div>

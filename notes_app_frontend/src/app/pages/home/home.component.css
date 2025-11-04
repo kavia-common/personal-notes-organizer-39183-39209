@@ -1,0 +1,22 @@
+.layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: calc(100vh - 56px);
+  background: var(--background);
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 14px;
+  padding: 16px;
+}
+
+.list-pane {
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.editor-pane {
+  overflow: auto;
+}

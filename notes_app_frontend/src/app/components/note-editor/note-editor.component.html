@@ -1,0 +1,47 @@
+<div class="editor" *ngIf="note; else noSel">
+  <div class="row">
+    <input
+      class="title"
+      [value]="note?.title || ''"
+      (input)="changeTitle.emit(($any($event.target)?.value) ?? '')"
+      placeholder="Note title" />
+    <select
+      class="notebook"
+      [value]="note?.notebookId || ''"
+      (change)="changeNotebook.emit((($any($event.target)?.value) || '') || null)">
+      <option value="">No Notebook</option>
+      <option *ngFor="let nb of notebooks" [value]="nb.id">{{ nb.name }}</option>
+    </select>
+  </div>
+
+  <textarea
+    class="content"
+    [value]="note?.content || ''"
+    (input)="changeContent.emit(($any($event.target)?.value) ?? '')"
+    placeholder="Write your note here... Supports plain text/markdown."></textarea>
+
+  <div class="tags">
+    <div class="tags-list">
+      <span *ngFor="let t of note?.tags || []" class="tag">#{{ t }}
+        <button (click)="removeTag(t)" title="Remove tag">✕</button>
+      </span>
+    </div>
+    <div class="tags-input">
+      <input
+        type="text"
+        class="tag-input"
+        [(ngModel)]="tagInput"
+        placeholder="Add tag and press +"
+        list="all-tags-datalist"
+      />
+      <datalist id="all-tags-datalist">
+        <option *ngFor="let t of allTags" [value]="t"></option>
+      </datalist>
+      <button class="btn amber" (click)="addTag()">+</button>
+    </div>
+  </div>
+</div>
+
+<ng-template #noSel>
+  <div class="no-selection">Select a note from the list or create a new one.</div>
+</ng-template>

@@ -1,0 +1,31 @@
+<aside class="sidebar">
+  <div class="section">
+    <div class="section-title">Notebooks</div>
+    <div class="list">
+      <button
+        class="item"
+        [class.active]="activeNotebookId === null"
+        (click)="selectNotebook.emit(null)">
+        All
+      </button>
+      <button
+        class="item"
+        *ngFor="let nb of notebooks"
+        [class.active]="activeNotebookId === nb.id"
+        (click)="onNotebookClick(nb.id)">
+        {{ nb.name }}
+      </button>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Tags</div>
+    <div class="tags">
+      <button
+        class="tag"
+        *ngFor="let tag of tags"
+        [class.active]="activeTag === tag"
+        (click)="onTagClick(tag)">#{{ tag }}</button>
+    </div>
+  </div>
+</aside>

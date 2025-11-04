@@ -1,0 +1,40 @@
+<app-header
+  [appTitle]="'Ocean Notes'"
+  [search]="query()"
+  (searchChange)="updateSearch($event)"
+  (newNote)="createNote()"
+  (newNotebook)="createNotebook()"
+></app-header>
+
+<div class="layout">
+  <app-sidebar
+    [notebooks]="notebooks()"
+    [tags]="tags()"
+    [activeNotebookId]="activeNotebookId()"
+    [activeTag]="activeTag()"
+    (selectNotebook)="onSelectNotebook($event)"
+    (selectTag)="onSelectTag($event)"
+  ></app-sidebar>
+
+  <main class="main">
+    <section class="list-pane">
+      <app-notes-list
+        [notes]="notes()"
+        [activeNoteId]="selectedNoteId"
+        (selectNote)="openNote($event)"
+        (deleteNote)="deleteNote($event)"
+      ></app-notes-list>
+    </section>
+    <section class="editor-pane">
+      <app-note-editor
+        [note]="selectedNote"
+        [notebooks]="notebooks()"
+        [allTags]="tags()"
+        (changeTitle)="updateTitle($event)"
+        (changeContent)="updateContent($event)"
+        (changeNotebook)="updateNotebook($event)"
+        (changeTags)="updateTags($event)"
+      ></app-note-editor>
+    </section>
+  </main>
+</div>
